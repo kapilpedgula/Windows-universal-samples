@@ -179,9 +179,8 @@ namespace winrt::SDKTemplate::implementation
                 // Decline
                 co_return false;
             }
-
             rootPage.NotifyUser(L"Connecting to " + deviceName + L"...", NotifyType::StatusMessage);
-
+        }
             // Pair device if not already paired and not using legacy settings
             if (!isPaired && !publisher.Advertisement().LegacySettings().IsEnabled())
             {
@@ -232,7 +231,7 @@ namespace winrt::SDKTemplate::implementation
             rootPage.NotifyUser(L"Devices connected on L2, listening on IP Address: " + EndpointPairs.GetAt(0).LocalHostName().DisplayName() +
                 L" Port: " + ServerPortString, NotifyType::StatusMessage);
             co_return true;
-        }
+        
     }
 
     fire_and_forget Scenario1_Advertiser::OnConnectionRequested(WiFiDirectConnectionListener const&, WiFiDirectConnectionRequestedEventArgs const& e)
